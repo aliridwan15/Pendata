@@ -6,6 +6,15 @@ Penambangan data (data mining) adalah proses eksplorasi dan analisis data dalam 
 
 Materi yang ada di repository ini akan mencakup berbagai aspek dalam penambangan data, mulai dari konsep dasar hingga implementasi algoritma dengan bantuan perangkat lunak atau bahasa pemrograman tertentu. Diharapkan materi ini dapat membantu dalam memahami bagaimana data dapat dimanfaatkan secara maksimal untuk menghasilkan keputusan yang lebih baik dan berbasis bukti.
 
+
+Nama : Ali Ridwan Nurhasan
+
+NIM : 230411100154
+
+Email : aliridwan15@gmail.com
+
+Prodi : Teknik Informatika
+
 Terima kasih sudah mendatangi akun ini.
 ```{tableofcontents}
 ```
