@@ -371,15 +371,19 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengantar-outlier-dalam-data-understanding">1. Pengantar Outlier dalam Data Understanding</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-k-nearest-neighbors-knn-dalam-deteksi-outlier">2. Konsep K-Nearest Neighbors (KNN) dalam Deteksi Outlier</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kapan-menggunakan-knn-untuk-deteksi-outlier">Kapan Menggunakan KNN untuk Deteksi Outlier?</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-k">Perhitungan K</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-k">Perhitungan K</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-pada-data-iris-menggunakan-k-nearest-neighbors-knn">Deteksi Outlier pada Data Iris menggunakan K-Nearest Neighbors (KNN)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jumlah-outlier-pada-data-iris-menggunakan-knn">Menghitung Jumlah Outlier pada Data Iris menggunakan KNN</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-daftar-outlier-yang-terdeteksi">Menampilkan daftar outlier yang terdeteksi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-jarak-knn-untuk-identifikasi-outlier">Mengurutkan Data Berdasarkan Jarak KNN untuk Identifikasi Outlier</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-dataset-iris-dari-scikit-learn">Menggunakan Dataset IRIS dari Scikit-learn</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-dalam-dataset-iris">Mendeteksi Outlier dalam Dataset Iris</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-knn">Mengurutkan Data Berdasarkan KNN</a></li>
 </ul>
 </li>
 </ul>
@@ -427,9 +431,8 @@ KNN tidak bergantung pada asumsi mengenai distribusi data, sehingga dapat diguna
 <p>Dataset dengan Ukuran Sedang:
 KNN lebih sesuai untuk dataset berukuran kecil hingga menengah, karena kompleksitas komputasinya meningkat seiring bertambahnya jumlah data. Untuk dataset yang sangat besar, metode lain seperti Local Outlier Factor (LOF) atau Isolation Forest dapat menjadi pilihan yang lebih efisien.</p>
 </section>
-</section>
 <section id="perhitungan-k">
-<h3>Perhitungan K<a class="headerlink" href="#perhitungan-k" title="Link to this heading">#</a></h3>
+<h4>Perhitungan K<a class="headerlink" href="#perhitungan-k" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Menghitung Jarak (Euclidean Distance)
 Jarak antara dua titik A (dengan koordinat <span class="math notranslate nohighlight">\((x_1, y_1)\)</span>  )) dan B (dengan koordinat <span class="math notranslate nohighlight">\((x_2, y_2)\)</span> )) dalam ruang dua dimensi dihitung dengan rumus:</p></li>
@@ -454,10 +457,14 @@ Untuk regresi, prediksi nilai data baru adalah rata-rata dari  <span class="math
 <li><p>Pemilihan <span class="math notranslate nohighlight">\(K\)</span> yang Optimal</p></li>
 </ol>
 <p>Biasanya, nilai <span class="math notranslate nohighlight">\(K\)</span> dipilih berdasarkan validasi silang (<em>cross-validation</em>) untuk menemukan keseimbangan antara bias dan varians.</p>
+</section>
 <section id="kesimpulan">
 <h4>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h4>
 <p>K-Nearest Neighbors (KNN) merupakan metode yang efektif untuk mendeteksi outlier, terutama pada tahap pemahaman data (Data Understanding). Metode ini bekerja dengan prinsip jarak untuk mengenali titik data yang secara signifikan berbeda dari mayoritas data lainnya. Meskipun KNN menawarkan fleksibilitas dan kemudahan dalam implementasi, metode ini juga memiliki keterbatasan, terutama dalam aspek komputasi dan pemilihan parameter. Oleh karena itu, sebelum menggunakan KNN untuk deteksi outlier, penting untuk mempertimbangkan karakteristik dataset serta kebutuhan analisis.</p>
 <p>Dalam aplikasinya, KNN sering dikombinasikan dengan teknik lain, seperti visualisasi data menggunakan scatter plot atau box plot, guna memverifikasi hasil deteksi outlier serta meningkatkan kualitas data sebelum melangkah ke tahap pemodelan.</p>
+</section>
+<section id="instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">
+<h4>Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python<a class="headerlink" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pymysql
@@ -488,6 +495,9 @@ Untuk regresi, prediksi nilai data baru adalah rata-rata dari  <span class="math
 <li></li>
 </ol>
 <p>Perintah ini saya gunakan untuk menginstal psycopg2, yang merupakan driver PostgreSQL untuk Python. PostgreSQL adalah database relasional open-source yang cukup powerful dan sering digunakan dalam aplikasi enterprise maupun web. Dengan psycopg2, saya bisa menghubungkan Python dengan database PostgreSQL untuk menjalankan query SQL, mengelola transaksi, serta memanipulasi data dengan efisien.</p>
+</section>
+<section id="import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">
+<h4>Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python<a class="headerlink" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
@@ -522,6 +532,9 @@ Untuk regresi, prediksi nilai data baru adalah rata-rata dari  <span class="math
 → Bagian dari scikit-learn yang digunakan untuk algoritma K-Nearest Neighbors (KNN). Dalam skrip ini, digunakan untuk mendeteksi outlier dengan menghitung rata-rata jarak ke beberapa tetangga terdekat.</p></li>
 </ol>
 <p>Kesimpulannya, library yang diimpor ini berfungsi untuk mengambil data dari database, melakukan perhitungan matematis, dan memvisualisasikan hasil analisis.</p>
+</section>
+<section id="fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">
+<h4>Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python<a class="headerlink" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_pg_data</span><span class="p">():</span>
@@ -560,6 +573,9 @@ Cursor dan koneksi database ditutup untuk mencegah kebocoran sumber daya.</p></l
 <li><p><strong>Mengembalikan Data dalam DataFrame</strong><br />
 Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses dan dianalisis.</p></li>
 </ol>
+</section>
+<section id="fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">
+<h4>Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python<a class="headerlink" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mysql_data</span><span class="p">():</span>
@@ -598,6 +614,9 @@ Cursor dan koneksi database ditutup untuk menghindari kebocoran sumber daya.</p>
 <li><p><strong>Mengembalikan Data dalam DataFrame</strong><br />
 Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses dan dianalisis.</p></li>
 </ol>
+</section>
+<section id="deteksi-outlier-pada-data-iris-menggunakan-k-nearest-neighbors-knn">
+<h4>Deteksi Outlier pada Data Iris menggunakan K-Nearest Neighbors (KNN)<a class="headerlink" href="#deteksi-outlier-pada-data-iris-menggunakan-k-nearest-neighbors-knn" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil data dari kedua database</span>
@@ -829,6 +848,9 @@ Pada kedua plot, titik biru menunjukkan data normal, sedangkan titik merah menun
 </ul>
 </li>
 </ol>
+</section>
+<section id="menghitung-jumlah-outlier-pada-data-iris-menggunakan-knn">
+<h4>Menghitung Jumlah Outlier pada Data Iris menggunakan KNN<a class="headerlink" href="#menghitung-jumlah-outlier-pada-data-iris-menggunakan-knn" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hitung total outlier</span>
@@ -877,6 +899,9 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
 </div>
 </div>
 </div>
+</section>
+<section id="mengurutkan-data-berdasarkan-jarak-knn-untuk-identifikasi-outlier">
+<h4>Mengurutkan Data Berdasarkan Jarak KNN untuk Identifikasi Outlier<a class="headerlink" href="#mengurutkan-data-berdasarkan-jarak-knn-untuk-identifikasi-outlier" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
@@ -1172,54 +1197,6 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
 </div>
 </div>
 </section>
-<section id="mengurutkan-data-berdasarkan-knn">
-<h4>Mengurutkan Data Berdasarkan KNN<a class="headerlink" href="#mengurutkan-data-berdasarkan-knn" title="Link to this heading">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
-<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;knn_distance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Changed column name to &quot;knn_distance&quot;</span>
-
-<span class="c1"># Tampilkan hasilnya</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_3122/3357397760.py</span> in <span class="ni">?</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;knn_distance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Changed column name to &quot;knn_distance&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Tampilkan hasilnya</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-
-<span class="nn">~/.local/lib/python3.12/site-packages/pandas/core/frame.py</span> in <span class="ni">?</span><span class="nt">(self, by, axis, ascending, inplace, kind, na_position, ignore_index, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7185</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7186</span>         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">by</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">7187</span>             <span class="c1"># len(by) == 1</span>
-<span class="g g-Whitespace">   </span><span class="mi">7188</span> 
-<span class="ne">-&gt; </span><span class="mi">7189</span>             <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_label_or_level_values</span><span class="p">(</span><span class="n">by</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7190</span> 
-<span class="g g-Whitespace">   </span><span class="mi">7191</span>             <span class="c1"># need to rewrap column in Series to apply key function</span>
-<span class="g g-Whitespace">   </span><span class="mi">7192</span>             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">~/.local/lib/python3.12/site-packages/pandas/core/generic.py</span> in <span class="ni">?</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1907</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">other_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">_values</span>
-<span class="g g-Whitespace">   </span><span class="mi">1908</span>         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_level_reference</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1909</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
-<span class="g g-Whitespace">   </span><span class="mi">1910</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1911</span>             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1912</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1913</span>         <span class="c1"># Check for duplicates</span>
-<span class="g g-Whitespace">   </span><span class="mi">1914</span>         <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-
-<span class="ne">KeyError</span>: &#39;knn_distance&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 <section id="apa-itu-lof">
@@ -1415,8 +1392,8 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
  10 Iris-setosa           1.5          0.1    False
 </pre></div>
 </div>
-<img alt="_images/6e8e44a1282f31c57e2a6521ecc6336f578e8dfc16954a09c696fc9c1d4f5ce6.png" src="_images/6e8e44a1282f31c57e2a6521ecc6336f578e8dfc16954a09c696fc9c1d4f5ce6.png" />
-<img alt="_images/f51adb73523e1b4b8029eacf5afad16a0752f292429074fa4a796d03a3baf982.png" src="_images/f51adb73523e1b4b8029eacf5afad16a0752f292429074fa4a796d03a3baf982.png" />
+<img alt="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" src="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" />
+<img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1524,15 +1501,19 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengantar-outlier-dalam-data-understanding">1. Pengantar Outlier dalam Data Understanding</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-k-nearest-neighbors-knn-dalam-deteksi-outlier">2. Konsep K-Nearest Neighbors (KNN) dalam Deteksi Outlier</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kapan-menggunakan-knn-untuk-deteksi-outlier">Kapan Menggunakan KNN untuk Deteksi Outlier?</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-k">Perhitungan K</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-k">Perhitungan K</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-pada-data-iris-menggunakan-k-nearest-neighbors-knn">Deteksi Outlier pada Data Iris menggunakan K-Nearest Neighbors (KNN)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jumlah-outlier-pada-data-iris-menggunakan-knn">Menghitung Jumlah Outlier pada Data Iris menggunakan KNN</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-daftar-outlier-yang-terdeteksi">Menampilkan daftar outlier yang terdeteksi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-jarak-knn-untuk-identifikasi-outlier">Mengurutkan Data Berdasarkan Jarak KNN untuk Identifikasi Outlier</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-dataset-iris-dari-scikit-learn">Menggunakan Dataset IRIS dari Scikit-learn</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-dalam-dataset-iris">Mendeteksi Outlier dalam Dataset Iris</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-knn">Mengurutkan Data Berdasarkan KNN</a></li>
 </ul>
 </li>
 </ul>
