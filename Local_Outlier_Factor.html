@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Apa itu LOF ? &#8212; Penambangan Data E</title>
+    <title>Local Outlier Factor &#8212; Penambangan Data E</title>
   
   
   
@@ -174,10 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="data_understanding.html">Data Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas1.html">Tugas1 Data_mining</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Tugas2.html"><strong>Tugas 2 data_understanding</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Apa itu LOF ?</a></li>
-
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Local Outlier Factor</a></li>
 </ul>
 </details></li>
 </ul>
@@ -362,7 +359,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Apa itu LOF ?</h1>
+    <h1>Local Outlier Factor</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,22 +369,21 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Apa itu LOF ?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-tahapan-lof">Bagaimana tahapan-tahapan LOF</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-contoh-menghitung-manual-lof">Bagaimana contoh menghitung manual LOF</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-lof-menggunakan-sk-learn">Implementasi LOF Menggunakan SK-learn</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-pada-data-iris">Mendeteksi Outlier pada Data IRIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-dataset-iris-dari-scikit-learn">Menggunakan Dataset IRIS dari Scikit-learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-dalam-dataset-iris">Mendeteksi Outlier dalam Dataset Iris</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lof">Apa itu LOF ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-tahapan-lof">Bagaimana tahapan-tahapan LOF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-contoh-menghitung-manual-lof">Bagaimana contoh menghitung manual LOF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-lof-menggunakan-sk-learn">Implementasi LOF Menggunakan SK-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-pada-data-iris">Mendeteksi Outlier pada Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-dataset-iris-dari-scikit-learn">Menggunakan Dataset IRIS dari Scikit-learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-dalam-dataset-iris">Mendeteksi Outlier dalam Dataset Iris</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -398,12 +394,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="apa-itu-lof">
-<h1>Apa itu LOF ?<a class="headerlink" href="#apa-itu-lof" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="local-outlier-factor">
+<h1>Local Outlier Factor<a class="headerlink" href="#local-outlier-factor" title="Link to this heading">#</a></h1>
+<section id="apa-itu-lof">
+<h2>Apa itu LOF ?<a class="headerlink" href="#apa-itu-lof" title="Link to this heading">#</a></h2>
 <p>Local Outlier Factor (LOF) adalah metode untuk mendeteksi outlier atau anomali dalam suatu dataset dengan membandingkan kepadatan lokal suatu titik terhadap kepadatan lokal tetangganya. Jika suatu titik memiliki kepadatan yang jauh lebih rendah dibandingkan dengan tetangga-tetangganya, maka titik tersebut dianggap sebagai outlier.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="bagaimana-tahapan-tahapan-lof">
-<h1>Bagaimana tahapan-tahapan LOF<a class="headerlink" href="#bagaimana-tahapan-tahapan-lof" title="Link to this heading">#</a></h1>
+<section id="bagaimana-tahapan-tahapan-lof">
+<h2>Bagaimana tahapan-tahapan LOF<a class="headerlink" href="#bagaimana-tahapan-tahapan-lof" title="Link to this heading">#</a></h2>
 <p>LOF mengukur kepadatan suatu titik relatif terhadap kepadatan tetangganya. Berikut adalah langkah-langkah utama dalam perhitungan LOF:</p>
 <ol class="arabic simple">
 <li><p>Menentukan Tetangga Terdekat (k-Nearest Neighbors, k-NN)</p></li>
@@ -449,8 +447,8 @@ LRD suatu titik
 <p>Jika (<span class="math notranslate nohighlight">\(LOF &gt; 1 \)</span>), maka titik memiliki kepadatan yang lebih rendah dari tetangganya (indikasi outlier).</p>
 <p>Semakin tinggi nilai LOF, semakin besa kemungkinan bahwa titik tersebut adalah outlier.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="bagaimana-contoh-menghitung-manual-lof">
-<h1>Bagaimana contoh menghitung manual LOF<a class="headerlink" href="#bagaimana-contoh-menghitung-manual-lof" title="Link to this heading">#</a></h1>
+<section id="bagaimana-contoh-menghitung-manual-lof">
+<h2>Bagaimana contoh menghitung manual LOF<a class="headerlink" href="#bagaimana-contoh-menghitung-manual-lof" title="Link to this heading">#</a></h2>
 <p>Diberikan 4 Titik Data:
 Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <p>Titik	Koordinat (x, y)</p>
@@ -502,10 +500,10 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <p><span class="math notranslate nohighlight">\({Kesimpulan:}  \)</span></p>
 <p>Titik <span class="math notranslate nohighlight">\(D (8,8) \)</span> adalah <span class="math notranslate nohighlight">\({outlier}\)</span> karena memiliki kepadatan yang jauh lebih rendah dibandingkan dengan titik-titik lainnya yang berada lebih dekat satu sama lain.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="implementasi-lof-menggunakan-sk-learn">
-<h1>Implementasi LOF Menggunakan SK-learn<a class="headerlink" href="#implementasi-lof-menggunakan-sk-learn" title="Link to this heading">#</a></h1>
+<section id="implementasi-lof-menggunakan-sk-learn">
+<h2>Implementasi LOF Menggunakan SK-learn<a class="headerlink" href="#implementasi-lof-menggunakan-sk-learn" title="Link to this heading">#</a></h2>
 <section id="instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">
-<h2>Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python<a class="headerlink" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python" title="Link to this heading">#</a></h2>
+<h3>Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python<a class="headerlink" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pymysql
@@ -538,7 +536,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <p>Perintah ini saya gunakan untuk menginstal psycopg2, yang merupakan driver PostgreSQL untuk Python. PostgreSQL adalah database relasional open-source yang cukup powerful dan sering digunakan dalam aplikasi enterprise maupun web. Dengan psycopg2, saya bisa menghubungkan Python dengan database PostgreSQL untuk menjalankan query SQL, mengelola transaksi, serta memanipulasi data dengan efisien.</p>
 </section>
 <section id="import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">
-<h2>Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python<a class="headerlink" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python" title="Link to this heading">#</a></h2>
+<h3>Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python<a class="headerlink" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
@@ -575,7 +573,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <p>Kesimpulannya, library yang diimpor ini berfungsi untuk mengambil data dari database, melakukan perhitungan matematis, dan memvisualisasikan hasil analisis.</p>
 </section>
 <section id="fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">
-<h2>Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python<a class="headerlink" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python" title="Link to this heading">#</a></h2>
+<h3>Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python<a class="headerlink" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_pg_data</span><span class="p">():</span>
@@ -599,7 +597,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </section>
 <section id="fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">
-<h2>Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python<a class="headerlink" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python" title="Link to this heading">#</a></h2>
+<h3>Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python<a class="headerlink" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mysql_data</span><span class="p">():</span>
@@ -623,7 +621,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </section>
 <section id="mendeteksi-outlier-pada-data-iris">
-<h2>Mendeteksi Outlier pada Data IRIS<a class="headerlink" href="#mendeteksi-outlier-pada-data-iris" title="Link to this heading">#</a></h2>
+<h3>Mendeteksi Outlier pada Data IRIS<a class="headerlink" href="#mendeteksi-outlier-pada-data-iris" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -717,7 +715,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </section>
 <section id="menggunakan-dataset-iris-dari-scikit-learn">
-<h2>Menggunakan Dataset IRIS dari Scikit-learn<a class="headerlink" href="#menggunakan-dataset-iris-dari-scikit-learn" title="Link to this heading">#</a></h2>
+<h3>Menggunakan Dataset IRIS dari Scikit-learn<a class="headerlink" href="#menggunakan-dataset-iris-dari-scikit-learn" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
@@ -752,7 +750,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </section>
 <section id="mendeteksi-outlier-dalam-dataset-iris">
-<h2>Mendeteksi Outlier dalam Dataset Iris<a class="headerlink" href="#mendeteksi-outlier-dalam-dataset-iris" title="Link to this heading">#</a></h2>
+<h3>Mendeteksi Outlier dalam Dataset Iris<a class="headerlink" href="#mendeteksi-outlier-dalam-dataset-iris" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -798,7 +796,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </section>
 <section id="memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">
-<h2>Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.<a class="headerlink" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya" title="Link to this heading">#</a></h2>
+<h3>Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.<a class="headerlink" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
@@ -842,6 +840,7 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -901,22 +900,21 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Apa itu LOF ?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-tahapan-lof">Bagaimana tahapan-tahapan LOF</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-contoh-menghitung-manual-lof">Bagaimana contoh menghitung manual LOF</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-lof-menggunakan-sk-learn">Implementasi LOF Menggunakan SK-learn</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-pada-data-iris">Mendeteksi Outlier pada Data IRIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-dataset-iris-dari-scikit-learn">Menggunakan Dataset IRIS dari Scikit-learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-dalam-dataset-iris">Mendeteksi Outlier dalam Dataset Iris</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lof">Apa itu LOF ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-tahapan-lof">Bagaimana tahapan-tahapan LOF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-contoh-menghitung-manual-lof">Bagaimana contoh menghitung manual LOF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-lof-menggunakan-sk-learn">Implementasi LOF Menggunakan SK-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library-pymysql-dan-psycopg2-untuk-koneksi-database-di-python">Instalasi Library PyMySQL dan Psycopg2 untuk Koneksi Database di Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-untuk-analisis-data-visualisasi-dan-koneksi-database-dengan-python">Import Library untuk Analisis Data, Visualisasi, dan Koneksi Database dengan Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-postgresql-menggunakan-python">Fungsi untuk Mengambil Data dari Database PostgreSQL menggunakan Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-mengambil-data-dari-database-mysql-menggunakan-python">Fungsi untuk Mengambil Data dari Database MySQL menggunakan Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-pada-data-iris">Mendeteksi Outlier pada Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-dataset-iris-dari-scikit-learn">Menggunakan Dataset IRIS dari Scikit-learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeteksi-outlier-dalam-dataset-iris">Mendeteksi Outlier dalam Dataset Iris</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dataset-iris-mengonversinya-menjadi-dataframe-pandas-dan-menampilkan-bentuk-serta-isinya">Memuat Dataset Iris, Mengonversinya menjadi DataFrame Pandas dan Menampilkan Bentuk Serta Isinya.</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
