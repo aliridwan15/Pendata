@@ -390,6 +390,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot-dengan-warna-berdasarkan-kelas-pada-dataset-iris">Visualisasi Scatter Plot dengan Warna Berdasarkan Kelas pada Dataset Iris</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-sepal-pada-dataset-iris-dengan-warna-berdasarkan-kelas">Scatter Plot Sepal pada Dataset Iris dengan Warna Berdasarkan Kelas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kinerja-model-naive-bayes-pada-data-dengan-dan-tanpa-outlier">Analisis Kinerja Model Naive Bayes pada Data dengan dan tanpa Outlier</a></li>
 </ul>
 </li>
 </ul>
@@ -541,11 +542,11 @@ Untuk regresi, prediksi nilai data baru adalah rata-rata dari  <span class="math
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_pg_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;pendat23-posgreesql.g.aivencloud.com&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;postgreependat2-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_ahuC43u5vzmRtJaxiSx&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_4T2SWDdsuTxisd9TzFu&quot;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="mi">26340</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
     <span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM iris_postgresql&quot;</span><span class="p">)</span>
@@ -582,11 +583,11 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mysql_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-aliridwan-mysql23.h.aivencloud.com&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysqlpendat23-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_FuVRxg5O9IiRcCsBYdY&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_QaQiHV_Bc5n2tLGZIlj&quot;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="mi">14789</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
     <span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM irismysql&quot;</span><span class="p">)</span>
@@ -669,7 +670,7 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id           class  petal_length  petal_width  sepal_length  sepal_width  knn_distance  outlier
   1     Iris-setosa           1.4          0.2           5.1          3.5      0.133137    False
-  2     Iris-setosa          14.0          2.0          49.0         30.0     14.671703     True
+  2     Iris-setosa          14.0          2.0          49.0         30.0     14.671703    False
   3     Iris-setosa           1.3          0.2           4.7          3.2      0.247029    False
   4     Iris-setosa          15.0         20.0          46.0         31.0     16.464817     True
   5     Iris-setosa           1.4          0.2           5.0          3.6      0.191277    False
@@ -688,8 +689,8 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
  18     Iris-setosa           1.4          0.3           5.1          3.5      0.152207    False
  19     Iris-setosa           1.7          0.3           5.7          3.8      0.451068    False
  20     Iris-setosa           1.5          0.3           5.1          3.8      0.259767    False
- 21     Iris-setosa          17.0          2.0          54.0         34.0     14.514526     True
- 22     Iris-setosa          15.0          4.0          51.0         37.0     14.140652     True
+ 21     Iris-setosa          17.0          2.0          54.0         34.0     14.514526    False
+ 22     Iris-setosa          15.0          4.0          51.0         37.0     14.140652    False
  23     Iris-setosa           1.0          0.2           4.6          3.6      0.518395    False
  24     Iris-setosa           1.7          0.5           5.1          3.3      0.322668    False
  25     Iris-setosa           1.9          0.2           4.8          3.4      0.427507    False
@@ -773,11 +774,11 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
 103  Iris-virginica           5.9          2.1           7.1          3.0      0.431573    False
 104  Iris-virginica           5.6          1.8           6.3          2.9      0.326625    False
 105  Iris-virginica           5.8          2.2           6.5          3.0      0.350276    False
-106  Iris-virginica          66.0         21.0          76.0         30.0     13.843757    False
+106  Iris-virginica          66.0         21.0          76.0         30.0     16.947724     True
 107  Iris-virginica           4.5          1.7           4.9          2.5      0.810164    False
 108  Iris-virginica           6.3          1.8           7.3          2.9      0.482648    False
 109  Iris-virginica           5.8          1.8           6.7          2.5      0.602832    False
-110  Iris-virginica          61.0         25.0          72.0         36.0     12.240420    False
+110  Iris-virginica          61.0         25.0          72.0         36.0     14.636399    False
 111  Iris-virginica           5.1          2.0           6.5          3.2      0.396195    False
 112  Iris-virginica           5.3          1.9           6.4          2.7      0.373868    False
 113  Iris-virginica           5.5          2.1           6.8          3.0      0.325700    False
@@ -785,7 +786,7 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
 115  Iris-virginica           5.1          2.4           5.8          2.8      0.533926    False
 116  Iris-virginica           5.3          2.3           6.4          3.2      0.364586    False
 117  Iris-virginica           5.5          1.8           6.5          3.0      0.304304    False
-118  Iris-virginica          67.0         22.0          77.0         38.0     13.461937    False
+118  Iris-virginica          67.0         22.0          77.0         38.0     18.018765     True
 119  Iris-virginica           6.9          2.3           7.7          2.6      0.889493    False
 120  Iris-virginica           5.0          1.5           6.0          2.2      0.546572    False
 121  Iris-virginica           5.7          2.3           6.9          3.2      0.289747    False
@@ -794,12 +795,12 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
 124  Iris-virginica           4.9          1.8           6.3          2.7      0.350507    False
 125  Iris-virginica           5.7          2.1           6.7          3.3      0.350372    False
 126  Iris-virginica           6.0          1.8           7.2          3.2      0.457343    False
-127  Iris-virginica          48.0         18.0          62.0         38.0     14.631644     True
+127  Iris-virginica          48.0         18.0          62.0         38.0     14.815812     True
 128  Iris-virginica           4.9          1.8           6.1          3.0      0.301817    False
 129  Iris-virginica           5.6          2.1           6.4          2.8      0.301871    False
 130  Iris-virginica           5.8          1.6           7.2          3.0      0.527962    False
 131  Iris-virginica           6.1          1.9           7.4          2.8      0.448059    False
-132  Iris-virginica          64.0         20.0          79.0         38.0     13.207079    False
+132  Iris-virginica          64.0          2.0          79.0          3.8     36.672232     True
 133  Iris-virginica           5.6          2.2           6.4          2.8      0.345839    False
 134  Iris-virginica           5.1          1.5           6.3          2.8      0.398736    False
 135  Iris-virginica           5.6          1.4           6.1          2.6      0.608343    False
@@ -820,8 +821,8 @@ Data yang diambil dikonversi menjadi DataFrame pandas agar lebih mudah diproses 
 150  Iris-virginica           5.1          1.8           5.9          3.0      0.324590    False
 </pre></div>
 </div>
-<img alt="_images/0e8f3e46a8b3a36cf8e03fd3217ab2878190d977e43695b88bfad8902b7142ad.png" src="_images/0e8f3e46a8b3a36cf8e03fd3217ab2878190d977e43695b88bfad8902b7142ad.png" />
-<img alt="_images/0c0915945b7d8aed9c52d071c43284177728e6761c77ed0ecb9ecbbde78badc6.png" src="_images/0c0915945b7d8aed9c52d071c43284177728e6761c77ed0ecb9ecbbde78badc6.png" />
+<img alt="_images/aa34573d9085767cea7c8095e66d694675873482f8af98665bdc596805704a8d.png" src="_images/aa34573d9085767cea7c8095e66d694675873482f8af98665bdc596805704a8d.png" />
+<img alt="_images/666ba5fdb01ae75b505573676c232b65c2c39b13026d86b472acd40e5837efb5.png" src="_images/666ba5fdb01ae75b505573676c232b65c2c39b13026d86b472acd40e5837efb5.png" />
 </div>
 </div>
 <p>Penjelasan Skrip diatas:</p>
@@ -888,14 +889,14 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outlier Teratas:
  id           class  petal_length  petal_width  sepal_length  sepal_width  knn_distance  outlier
+132  Iris-virginica          64.0          2.0          79.0          3.8     36.672232     True
  61 Iris-versicolor          35.0         10.0          50.0         20.0     18.096639     True
+118  Iris-virginica          67.0         22.0          77.0         38.0     18.018765     True
+106  Iris-virginica          66.0         21.0          76.0         30.0     16.947724     True
  94 Iris-versicolor          33.0         10.0          50.0         23.0     16.878893     True
   4     Iris-setosa          15.0         20.0          46.0         31.0     16.464817     True
  12     Iris-setosa          16.0         20.0          48.0         34.0     16.114105     True
-  2     Iris-setosa          14.0          2.0          49.0         30.0     14.671703     True
-127  Iris-virginica          48.0         18.0          62.0         38.0     14.631644     True
- 21     Iris-setosa          17.0          2.0          54.0         34.0     14.514526     True
- 22     Iris-setosa          15.0          4.0          51.0         37.0     14.140652     True
+127  Iris-virginica          48.0         18.0          62.0         38.0     14.815812     True
 </pre></div>
 </div>
 </div>
@@ -1050,21 +1051,21 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
  99 Iris-versicolor           3.0          1.1           5.1          2.5      0.759912    False
 107  Iris-virginica           4.5          1.7           4.9          2.5      0.810164    False
 119  Iris-virginica           6.9          2.3           7.7          2.6      0.889493    False
-110  Iris-virginica          61.0         25.0          72.0         36.0     12.240420    False
  78 Iris-versicolor          50.0         17.0          67.0         30.0     12.449288    False
  67 Iris-versicolor          45.0         15.0          56.0         30.0     13.099746    False
-132  Iris-virginica          64.0         20.0          79.0         38.0     13.207079    False
-118  Iris-virginica          67.0         22.0          77.0         38.0     13.461937    False
-106  Iris-virginica          66.0         21.0          76.0         30.0     13.843757    False
  59 Iris-versicolor          46.0         13.0          66.0         29.0     14.053803    False
- 22     Iris-setosa          15.0          4.0          51.0         37.0     14.140652     True
- 21     Iris-setosa          17.0          2.0          54.0         34.0     14.514526     True
-127  Iris-virginica          48.0         18.0          62.0         38.0     14.631644     True
-  2     Iris-setosa          14.0          2.0          49.0         30.0     14.671703     True
+ 22     Iris-setosa          15.0          4.0          51.0         37.0     14.140652    False
+ 21     Iris-setosa          17.0          2.0          54.0         34.0     14.514526    False
+110  Iris-virginica          61.0         25.0          72.0         36.0     14.636399    False
+  2     Iris-setosa          14.0          2.0          49.0         30.0     14.671703    False
+127  Iris-virginica          48.0         18.0          62.0         38.0     14.815812     True
  12     Iris-setosa          16.0         20.0          48.0         34.0     16.114105     True
   4     Iris-setosa          15.0         20.0          46.0         31.0     16.464817     True
  94 Iris-versicolor          33.0         10.0          50.0         23.0     16.878893     True
+106  Iris-virginica          66.0         21.0          76.0         30.0     16.947724     True
+118  Iris-virginica          67.0         22.0          77.0         38.0     18.018765     True
  61 Iris-versicolor          35.0         10.0          50.0         20.0     18.096639     True
+132  Iris-virginica          64.0          2.0          79.0          3.8     36.672232     True
 </pre></div>
 </div>
 </div>
@@ -1090,11 +1091,11 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
 
 <span class="k">def</span> <span class="nf">get_pg_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;pendat23-posgreesql.g.aivencloud.com&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;postgreependat2-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_ahuC43u5vzmRtJaxiSx&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_4T2SWDdsuTxisd9TzFu&quot;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="mi">26340</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
     <span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM iris_postgresql&quot;</span><span class="p">)</span>
@@ -1107,11 +1108,11 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
 
 <span class="k">def</span> <span class="nf">get_mysql_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-aliridwan-mysql23.h.aivencloud.com&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysqlpendat23-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_FuVRxg5O9IiRcCsBYdY&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_QaQiHV_Bc5n2tLGZIlj&quot;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="mi">14789</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
     <span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM irismysql&quot;</span><span class="p">)</span>
@@ -1287,7 +1288,7 @@ Fungsi .sum() menjumlahkan semua nilai True (1), sehingga menghasilkan total jum
 129  Iris-virginica           5.6          2.1           6.4          2.8              1
 130  Iris-virginica           5.8          1.6           7.2          3.0              1
 131  Iris-virginica           6.1          1.9           7.4          2.8              1
-132  Iris-virginica          64.0         20.0          79.0         38.0             -1
+132  Iris-virginica          64.0          2.0          79.0          3.8             -1
 133  Iris-virginica           5.6          2.2           6.4          2.8              1
 134  Iris-virginica           5.1          1.5           6.3          2.8              1
 135  Iris-virginica           5.6          1.4           6.1          2.6              1
@@ -1325,7 +1326,7 @@ Data Outlier:
 110  Iris-virginica          61.0         25.0          72.0         36.0
 118  Iris-virginica          67.0         22.0          77.0         38.0
 127  Iris-virginica          48.0         18.0          62.0         38.0
-132  Iris-virginica          64.0         20.0          79.0         38.0
+132  Iris-virginica          64.0          2.0          79.0          3.8
 
 Jumlah data setelah dihapus :  135
 
@@ -1818,6 +1819,131 @@ Iris-versicolor       0.75      0.43      0.55         7
 </div>
 </div>
 </section>
+<section id="analisis-kinerja-model-naive-bayes-pada-data-dengan-dan-tanpa-outlier">
+<h4>Analisis Kinerja Model Naive Bayes pada Data dengan dan tanpa Outlier<a class="headerlink" href="#analisis-kinerja-model-naive-bayes-pada-data-dengan-dan-tanpa-outlier" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Asumsikan df_merged sudah ada dari kode sebelumnya</span>
+
+<span class="c1"># Encode label kelas ke numerik</span>
+<span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;class_encoded&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">])</span>
+
+<span class="c1"># Data dengan outlier</span>
+<span class="n">X_all</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">feature_columns</span><span class="p">]</span>
+<span class="n">y_all</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;class_encoded&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Pastikan dalam bentuk array numpy</span>
+
+<span class="c1"># Data tanpa outlier</span>
+<span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">])</span>
+<span class="n">X_clean</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">feature_columns</span><span class="p">]</span>
+<span class="n">y_clean</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="s2">&quot;class_encoded&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Pastikan dalam bentuk array numpy</span>
+
+<span class="c1"># Split data dengan outlier</span>
+<span class="n">X_train_all</span><span class="p">,</span> <span class="n">X_test_all</span><span class="p">,</span> <span class="n">y_train_all</span><span class="p">,</span> <span class="n">y_test_all</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Split data tanpa outlier</span>
+<span class="n">X_train_clean</span><span class="p">,</span> <span class="n">X_test_clean</span><span class="p">,</span> <span class="n">y_train_clean</span><span class="p">,</span> <span class="n">y_test_clean</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_clean</span><span class="p">,</span> <span class="n">y_clean</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi model Naive Bayes</span>
+<span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># Latih dan uji model dengan outlier</span>
+<span class="n">y_pred_all</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_all</span><span class="p">,</span> <span class="n">y_train_all</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_all</span><span class="p">)</span>
+<span class="n">mislabeled_all</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test_all</span> <span class="o">!=</span> <span class="n">y_pred_all</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">accuracy_all</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_all</span><span class="p">,</span> <span class="n">y_pred_all</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of mislabeled points with outliers out of a total </span><span class="si">%d</span><span class="s2"> points : </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X_test_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mislabeled_all</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy with outliers: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_all</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Menampilkan label yang salah pada data dengan outlier</span>
+<span class="n">mislabeled_indices_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test_all</span> <span class="o">!=</span> <span class="n">y_pred_all</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mislabeled points with outliers:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mislabeled_indices_all</span><span class="p">:</span>
+    <span class="n">true_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test_all</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">predicted_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_pred_all</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, True Label: </span><span class="si">{</span><span class="n">true_label</span><span class="si">}</span><span class="s2">, Predicted: </span><span class="si">{</span><span class="n">predicted_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1"># Latih dan uji model tanpa outlier</span>
+<span class="n">y_pred_clean</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_clean</span><span class="p">,</span> <span class="n">y_train_clean</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_clean</span><span class="p">)</span>
+<span class="n">mislabeled_clean</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test_clean</span> <span class="o">!=</span> <span class="n">y_pred_clean</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">accuracy_clean</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_clean</span><span class="p">,</span> <span class="n">y_pred_clean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of mislabeled points without outliers out of a total </span><span class="si">%d</span><span class="s2"> points : </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X_test_clean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mislabeled_clean</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy without outliers: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_clean</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Menampilkan label yang salah pada data tanpa outlier</span>
+<span class="n">mislabeled_indices_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test_clean</span> <span class="o">!=</span> <span class="n">y_pred_clean</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mislabeled points without outliers:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mislabeled_indices_clean</span><span class="p">:</span>
+    <span class="n">true_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test_clean</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">predicted_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_pred_clean</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, True Label: </span><span class="si">{</span><span class="n">true_label</span><span class="si">}</span><span class="s2">, Predicted: </span><span class="si">{</span><span class="n">predicted_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi Confusion Matrix</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_all</span><span class="p">,</span> <span class="n">y_pred_all</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix with Outliers&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Label&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Label&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_clean</span><span class="p">,</span> <span class="n">y_pred_clean</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix without Outliers&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Label&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Label&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of mislabeled points with outliers out of a total 30 points : 20
+Accuracy with outliers: 33.33%
+Mislabeled points with outliers:
+Index: 1, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 2, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 5, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 7, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 10, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 11, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 12, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 13, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 14, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 16, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 19, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 20, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 21, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 22, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 23, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 25, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 26, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 27, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 28, True Label: Iris-setosa, Predicted: Iris-versicolor
+Index: 29, True Label: Iris-setosa, Predicted: Iris-versicolor
+
+Number of mislabeled points without outliers out of a total 27 points : 6
+Accuracy without outliers: 77.78%
+Mislabeled points without outliers:
+Index: 1, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 5, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 7, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 14, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 16, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 26, True Label: Iris-versicolor, Predicted: Iris-virginica
+</pre></div>
+</div>
+<img alt="_images/6440293535c35e1551ed146c95aeb9778d51425d81f0322168086d3bd4d53d66.png" src="_images/6440293535c35e1551ed146c95aeb9778d51425d81f0322168086d3bd4d53d66.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -1909,6 +2035,7 @@ Iris-versicolor       0.75      0.43      0.55         7
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot-dengan-warna-berdasarkan-kelas-pada-dataset-iris">Visualisasi Scatter Plot dengan Warna Berdasarkan Kelas pada Dataset Iris</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-sepal-pada-dataset-iris-dengan-warna-berdasarkan-kelas">Scatter Plot Sepal pada Dataset Iris dengan Warna Berdasarkan Kelas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kinerja-model-naive-bayes-pada-data-dengan-dan-tanpa-outlier">Analisis Kinerja Model Naive Bayes pada Data dengan dan tanpa Outlier</a></li>
 </ul>
 </li>
 </ul>

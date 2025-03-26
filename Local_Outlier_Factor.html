@@ -578,11 +578,11 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_pg_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;pendat23-posgreesql.g.aivencloud.com&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;postgreependat2-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_ahuC43u5vzmRtJaxiSx&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_4T2SWDdsuTxisd9TzFux&quot;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="mi">26340</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
     <span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM iris_postgresql&quot;</span><span class="p">)</span>
@@ -602,11 +602,11 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mysql_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-aliridwan-mysql23.h.aivencloud.com&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysqlpendat23-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_FuVRxg5O9IiRcCsBYdY&quot;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_QaQiHV_Bc5n2tLGZIlj&quot;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="mi">14789</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
     <span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM irismysql&quot;</span><span class="p">)</span>
@@ -682,35 +682,38 @@ Misalkan kita memiliki empat titik data dalam ruang dua dimensi:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 Data Sepal:
- id       class  sepal_length  sepal_width  outlier
-  1 Iris-setosa           5.1          3.5    False
-  2 Iris-setosa          40.9         30.0     True
-  3 Iris-setosa           4.7          3.2    False
-  4 Iris-setosa           4.6          3.1    False
-  5 Iris-setosa           5.0          3.6    False
-  6 Iris-setosa           5.4          3.9    False
-  7 Iris-setosa           4.6          3.4    False
-  8 Iris-setosa           5.0          3.4    False
-  9 Iris-setosa           4.4          2.9    False
- 10 Iris-setosa           4.9          3.1    False
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">NearestNeighbors</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Ambil data dari kedua database</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">df_postgresql</span> <span class="o">=</span> <span class="n">get_pg_data</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">df_mysql</span> <span class="o">=</span> <span class="n">get_mysql_data</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Gabungkan berdasarkan kolom &#39;id&#39; dan &#39;Class&#39;</span>
 
-10 Data Petal:
- id       class  petal_length  petal_width  outlier
-  1 Iris-setosa           1.4          0.2    False
-  2 Iris-setosa          14.0          2.0     True
-  3 Iris-setosa           1.3          0.2    False
-  4 Iris-setosa           1.5          0.2    False
-  5 Iris-setosa           1.4          0.2    False
-  6 Iris-setosa           1.7          0.4    False
-  7 Iris-setosa           1.4          0.3    False
-  8 Iris-setosa           1.5          0.2    False
-  9 Iris-setosa           1.4          0.2    False
- 10 Iris-setosa           1.5          0.1    False
+<span class="nn">Cell In[3], line 2,</span> in <span class="ni">get_pg_data</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">get_pg_data</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">host</span><span class="o">=</span><span class="s2">&quot;postgreependat2-pendat4.h.aivencloud.com&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_4T2SWDdsuTxisd9TzFux&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">port</span><span class="o">=</span><span class="mi">24915</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM iris_postgresql&quot;</span><span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/psycopg2/__init__.py:122,</span> in <span class="ni">connect</span><span class="nt">(dsn, connection_factory, cursor_factory, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="n">kwasync</span><span class="p">[</span><span class="s1">&#39;async_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;async_&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">dsn</span> <span class="o">=</span> <span class="n">_ext</span><span class="o">.</span><span class="n">make_dsn</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">122</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">_connect</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="n">connection_factory</span><span class="o">=</span><span class="n">connection_factory</span><span class="p">,</span> <span class="o">**</span><span class="n">kwasync</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="k">if</span> <span class="n">cursor_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="n">conn</span><span class="o">.</span><span class="n">cursor_factory</span> <span class="o">=</span> <span class="n">cursor_factory</span>
+
+<span class="ne">OperationalError</span>: FATAL:  password authentication failed for user &quot;avnadmin&quot;
+<span class="ne">FATAL</span>:  no pg_hba.conf entry for host &quot;23.97.62.142&quot;, user &quot;avnadmin&quot;, database &quot;defaultdb&quot;, no encryption
 </pre></div>
 </div>
-<img alt="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" src="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" />
-<img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
 </div>
 </div>
 </section>
